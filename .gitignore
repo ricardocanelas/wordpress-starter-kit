@@ -1,0 +1,23 @@
+.DS_Store
+
+### PHPStorm IDE
+.idea
+
+### WordPress template
+*.log
+sites/html
+sites/helloworld/public/wordpress/wp-config.php
+sites/helloworld/public/wordpress/wp-content/advanced-cache.php
+sites/helloworld/public/wordpress/wp-content/backup-db/
+sites/helloworld/public/wordpress/wp-content/backups/
+sites/helloworld/public/wordpress/wp-content/blogs.dir/
+sites/helloworld/public/wordpress/wp-content/cache/
+sites/helloworld/public/wordpress/wp-content/upgrade/
+sites/helloworld/public/wordpress/wp-content/uploads/
+sites/helloworld/public/wordpress/wp-content/wp-cache-config.php
+sites/helloworld/public/wordpress/wp-content/plugins/hello.php
+sites/helloworld/public/wordpress
+
+### Vagrant template
+.vagrant/
+

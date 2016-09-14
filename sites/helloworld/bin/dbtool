@@ -1,0 +1,60 @@
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+source "$DIR/db.conf"
+
+function usage {
+    echo "usage: $0 <command>"
+    echo
+    echo "Commands:"
+    echo "    dump    Dump the database."
+    echo "    restore Restore the datbase."
+}
+
+function do_dump {
+    echo "Dumping database..."
+    vagrant ssh -c "mysqldump -u $db_user -p$db_pass $db_name | gzip > \"$db_file\""
+    echo "    ...done."
+}
+
+function do_restore {
+    echo "Restoring databse..."
+    vagrant ssh -c "zcat \"$db_file\" | mysql -u $db_user -p$db_pass $db_name"
+    echo "    ...done."
+}
+
+function do_stage {
+    echo "Staging database dump..."
+    git add "$db_filename"
+    echo "    ...done."
+}
+
+if [[ $# < 1 ]]; then
+    echo "Error: too few arguments."
+    usage
+    exit 1
+fi
+
+case $1 in
+    dump)
+        do_dump
+        exit
+        ;;
+    restore)
+        do_restore
+        exit
+        ;;
+    stage)
+        do_stage
+        exit
+        ;;
+    -h|--help)
+        usage
+        exit 0
+        ;;
+    *)
+        echo "Unknown command: $1"
+        usage
+        exit 1
+        ;;
+esac
+
