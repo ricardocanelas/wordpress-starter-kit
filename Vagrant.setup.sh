@@ -5,6 +5,60 @@ Step () {
 }
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+                                              Step 'Virtual Machine Setup'
+# ---------------------------------------------------------------------------------------------------------------------
+
+# Updating packages
+apt-get update -qq
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+                                                  Step 'Apache Setup'
+# ---------------------------------------------------------------------------------------------------------------------
+
+
+# Installing Packages
+apt-get install -y apache2 libapache2-mod-fastcgi apache2-mpm-worker
+
+# linking Vagrant directory to Apache 2.4 public directory
+# rm -rf /var/www
+# ln -fs /vagrant /var/www
+
+# Add ServerName to httpd.conf
+echo "ServerName localhost" > /etc/apache2/httpd.conf
+# Setup hosts file
+VHOST=$(cat <<EOF
+    <VirtualHost *:80>
+      DocumentRoot "/var/www/helloworld/public"
+      ServerName helloworld.dev
+      ServerAlias helloworld.dev
+      <Directory "/var/www/helloworld/public">
+        AllowOverride All
+        Require all granted
+      </Directory>
+    </VirtualHost>
+EOF
+)
+echo "${VHOST}" > /etc/apache2/sites-enabled/000-default.conf
+
+# Loading needed modules to make apache work
+a2enmod actions fastcgi rewrite
+service apache2 reload
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+                                                   Step 'MySQL Setup'
+# ---------------------------------------------------------------------------------------------------------------------
+
+# Setting MySQL (username: root) ~ (password: root)
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+
+# Installing packages
+apt-get install -y mysql-server mysql-client php5-mysql
+
+
 
 # ---------------------------------------------------------------------------------------------------------------------
                                                     Step 'Database'
