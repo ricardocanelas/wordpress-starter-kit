@@ -57,6 +57,22 @@ define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 
+
+/**
+ * URLs
+ */
+define('WP_HOME', 'http://192.168.10.11');
+define('WP_SITEURL', 'http://192.168.10.11/wordpress');
+
+
+/**
+ * Custom Content Directory
+ */
+define('CONTENT_DIR', '/wp-app');
+define('WP_CONTENT_DIR', dirname(__DIR__) . '/public' . CONTENT_DIR);
+define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
+
+
 /**
  * WordPress Database Table prefix.
  *

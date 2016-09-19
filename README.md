@@ -77,6 +77,9 @@ sites/
 
 # Sage Theme
 
+More information about installation and setup 
+https://github.com/roots/sage/tree/9.0.0-alpha.3
+
 ## Theme structure
 
 ```shell
@@ -109,9 +112,3 @@ themes/your-theme-name/   # → Root of your Sage based theme
 └── vendor/               # → Composer packages (never edit)
 ```
 
-How install the Sage theme
-
-```
-composer create-project roots/sage public/your-theme-name 9.0.0-alpha.3```
-wp theme activate your-theme-name
-```
