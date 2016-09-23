@@ -21,3 +21,6 @@ sites/helloworld/public/wordpress
 ### Vagrant template
 .vagrant/
 
+### Node
+node_modules
+.npm
