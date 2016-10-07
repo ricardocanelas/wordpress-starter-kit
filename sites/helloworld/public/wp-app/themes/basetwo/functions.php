@@ -1,8 +1,9 @@
 <?php
 
-
+#-----------------------------------------------------------------#
+# Base Template includes
+#-----------------------------------------------------------------#
 /**
- * Base Template includes
  *
  * The base_includes array determines the code library included in your theme.
  * Add or remove files to the array as needed. Supports child theme overrides.
@@ -24,6 +25,33 @@ foreach ($base_includes as $file) {
 }
 unset($file, $filepath);
 
+
+
+#-----------------------------------------------------------------#
+# Config PHPMailer on development environment
+#-----------------------------------------------------------------#
+
+if(WP_ENV == 'development') {
+    add_action('phpmailer_init', 'my_phpmailer_example');
+    function my_phpmailer_example( $phpmailer ) {
+        $phpmailer->IsSMTP(); // enable SMTP
+        $phpmailer->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
+        $phpmailer->SMTPAuth = true;  // authentication enabled
+        $phpmailer->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
+        $phpmailer->Host = 'smtp.gmail.com';
+        $phpmailer->Port = 465;
+        $phpmailer->Username = 'myemail@gmail.com';
+        $phpmailer->Password = '**********'; // please, don't change this password. Never ever!
+        $phpmailer->From = "wpsendmailsoftwaredesign@gmail.com";
+        $phpmailer->FromName = "Software Design (" . WP_ENV . " environment)";
+    }
+}
+
+
+
+#-----------------------------------------------------------------#
+# Register Post Types
+#-----------------------------------------------------------------#
 
 add_action('init', 'register_project');
 
