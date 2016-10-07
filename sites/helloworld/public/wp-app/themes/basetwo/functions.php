@@ -42,8 +42,8 @@ if(WP_ENV == 'development') {
         $phpmailer->Port = 465;
         $phpmailer->Username = 'myemail@gmail.com';
         $phpmailer->Password = '**********'; // please, don't change this password. Never ever!
-        $phpmailer->From = "wpsendmailsoftwaredesign@gmail.com";
-        $phpmailer->FromName = "Software Design (" . WP_ENV . " environment)";
+        $phpmailer->From = "myemail@gmail.com";
+        $phpmailer->FromName = "Ricardo Canelas (" . WP_ENV . " environment)";
     }
 }
 
