@@ -1,4 +1,26 @@
 <?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+
+/**
+ * Set up our global environment constant and load its config first
+ * Default: development
+ */
+
+$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+if (file_exists(dirname(__DIR__) . '/config/.env')) {
+    $dotenv->load();
+    $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
+}
+
+define('WP_ENV', getenv('WP_ENV') ?: 'development');
+$env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
+if (file_exists($env_config)) {
+    require_once $env_config;
+}
+
+
 /**
  * The base configuration for WordPress
  *
@@ -20,16 +42,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'helloworld');
+define('DB_NAME', $_ENV['DB_NAME']);
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', $_ENV['DB_USER']);
 
 /** MySQL database password */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', $_ENV['DB_HOST']);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -46,14 +68,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define('AUTH_KEY',         $_ENV['AUTH_KEY']);
+define('SECURE_AUTH_KEY',  $_ENV['SECURE_AUTH_KEY']);
+define('LOGGED_IN_KEY',    $_ENV['LOGGED_IN_KEY']);
+define('NONCE_KEY',        $_ENV['NONCE_KEY']);
+define('AUTH_SALT',        $_ENV['AUTH_SALT']);
+define('SECURE_AUTH_SALT', $_ENV['SECURE_AUTH_SALT']);
+define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
+define('NONCE_SALT',       $_ENV['NONCE_SALT']);
 
 /**#@-*/
 
@@ -61,8 +83,8 @@ define('NONCE_SALT',       'put your unique phrase here');
 /**
  * URLs
  */
-define('WP_HOME', 'http://192.168.10.11');
-define('WP_SITEURL', 'http://192.168.10.11/wordpress');
+define('WP_HOME', $_ENV['WP_HOME']);
+define('WP_SITEURL', $_ENV['WP_SITEURL']);
 
 
 /**
@@ -81,25 +103,14 @@ define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
  */
 $table_prefix  = 'wp_';
 
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- *
- * For information on other constants that can be used for debugging,
- * visit the Codex.
- *
- * @link https://codex.wordpress.org/Debugging_in_WordPress
- */
-define('WP_DEBUG', true);
-
-/* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/../public/wordpress/');
+    define('ABSPATH', dirname(__FILE__) . '/../public/wordpress/');
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+
+
+/* That's all, stop editing! Happy blogging. */

@@ -1,0 +1,6 @@
+{
+    "name": "config/wp-app",
+    "require": {
+        "vlucas/phpdotenv": "^2.0.1"
+    }
+}
