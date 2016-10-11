@@ -8,7 +8,7 @@ require __DIR__ . '/vendor/autoload.php';
  * Default: development
  */
 
-$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+$dotenv = new Dotenv\Dotenv(dirname(__DIR__ . '/config/'));
 if (file_exists(dirname(__DIR__) . '/config/.env')) {
     $dotenv->load();
     $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
