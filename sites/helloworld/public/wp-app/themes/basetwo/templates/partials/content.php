@@ -1,8 +1,25 @@
-<article <?php post_class(); ?> >
+<div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="<?= 'post post-'.get_the_ID() ?> thumbnail">
 
-    <!-- title -->
-    <h2>x <?php the_title(); ?> x</h2>
-    <?php echo get_the_date('M d, Y'); ?>
+        <div class="image">
+            <?php if ( has_post_thumbnail() ) {
+                the_post_thumbnail('medium');
+            }?>
+        </div>
 
-</article>
+        <div class="caption">
+            <h3>
+                <a href="<?php the_permalink(); ?>">
+                    <?php the_title(); ?>
+                </a>
+            </h3>
+            <p><?php the_excerpt(); ?></p>
+            <p>
+                <a href="<?php the_permalink(); ?>" class="btn btn-primary" role="button">
+                    read more
+                </a>
+            </p>
+        </div>
 
+    </div>
+</div>

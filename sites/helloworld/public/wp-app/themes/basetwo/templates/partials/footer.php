@@ -1,10 +1,9 @@
+<div class="row">
 
+    <div class="col-xs-12">
+        <p>CopyRight</p>
+    </div>
 
-<div id="footer">
-	Copyright
+    <?php dynamic_sidebar('sidebar-footer'); ?>
+
 </div>
-
-<?php wp_footer(); ?>
-
-</body>
-</html>

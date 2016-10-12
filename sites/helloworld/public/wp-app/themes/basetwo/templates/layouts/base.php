@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
+
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width">
@@ -14,9 +15,7 @@
 </head>
 <body <?php body_class(); ?>>
 
-    <h1>-BASE-</h1>
-
-    <div id="wrapper">
+    <div id="wrapper" class="container">
 
         <div id="header">
             <?php do_action('get_header'); ?>

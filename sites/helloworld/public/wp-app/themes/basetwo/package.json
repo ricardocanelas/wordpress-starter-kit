@@ -20,6 +20,12 @@
   "engines": {
     "node": ">= 4.5"
   },
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "4.6.3",
+    "gulp-util": "^3.0.7",
+    "jquery": "1.12.4 - 3"
+  },
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-polyfill": "^6.13.0",
@@ -46,11 +52,5 @@
     "imagemin-pngquant": "^4.2.0",
     "merge-stream": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "bootstrap": "3.3.7",
-    "font-awesome": "4.6.3",
-    "gulp-util": "^3.0.7",
-    "jquery": "1.12.4 - 3"
   }
 }
