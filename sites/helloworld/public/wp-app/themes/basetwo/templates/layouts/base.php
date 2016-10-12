@@ -22,7 +22,7 @@
             <?php get_template_part('templates/partials/header'); ?>
         </div>
 
-        <div id="main-content">
+        <div id="middle">
             <?php include Wrapper\template_path(); ?>
         </div>
 

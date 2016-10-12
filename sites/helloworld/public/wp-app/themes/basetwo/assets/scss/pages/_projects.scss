@@ -1,0 +1,19 @@
+body #wrapper #middle{
+
+  .projects{
+    .project{
+      .project-container{
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #f2f2f2;
+      }
+
+      &:last-child .project-container{
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+
+}

@@ -5808,5 +5808,16 @@ body #wrapper #header {
     padding: 10px 15px 10px 0px; }
 
 body #wrapper #footer {
+  margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid #e8e2dd; }
+
+body #wrapper #middle .projects .project .project-container {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f2f2f2; }
+
+body #wrapper #middle .projects .project:last-child .project-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none; }

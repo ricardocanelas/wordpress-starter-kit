@@ -1,4 +1,4 @@
-<article <?php post_class(); ?> >
+<div class="col-xs-12 project-<?= get_the_ID() ?>">
 
     <!-- title -->
     <h3>
@@ -15,8 +15,5 @@
     <!-- excerpt -->
     <?php  the_excerpt() ?>
 
-
-    <button class="btn btn-default">Back</button>
-
-</article>
+</div>
 
