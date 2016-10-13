@@ -1,21 +1,14 @@
-<div class="col-xs-12 project project-<?= get_the_ID() ?>">
+<div class="col-xs-12 <?= util_post_class('content-single') ?>">
+
     <div class="project-container">
-        <!-- title -->
-        <b>
-            <a href="<?= get_permalink() ?>">
-                <?php the_title(); ?>
-            </a>
-        </b>
-        <br/>
 
-        <!-- date -->
-        <small>
-            <?php echo get_the_date('M d, Y'); ?>
-        </small>
+        <b><a href="<?= get_permalink() ?>"><?php the_title(); ?></a></b><br/>
 
-        <!-- excerpt -->
+        <small><?php echo get_the_date('M d, Y'); ?></small>
+
         <p><?php the_excerpt() ?></p>
 
     </div>
+
 </div>
 

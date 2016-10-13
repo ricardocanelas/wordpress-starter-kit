@@ -1,10 +1,9 @@
-<div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="<?= 'post post-'.get_the_ID() ?> thumbnail">
+<div class="col-xs-12 col-sm-6 col-md-4 <?= util_post_class('content-single') ?>">
+
+    <div class="post-container thumbnail">
 
         <div class="image">
-            <?php if ( has_post_thumbnail() ) {
-                the_post_thumbnail('medium');
-            }?>
+            <?php if ( has_post_thumbnail() ) the_post_thumbnail('medium'); ?>
         </div>
 
         <div class="caption">
@@ -22,4 +21,5 @@
         </div>
 
     </div>
+
 </div>

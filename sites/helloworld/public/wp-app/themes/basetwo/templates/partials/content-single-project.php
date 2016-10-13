@@ -1,19 +1,21 @@
-<div class="col-xs-12 project-<?= get_the_ID() ?>">
+<div class="col-xs-12 <?= util_post_class('content-single') ?>">
 
-    <!-- title -->
-    <h3>
+    <?php get_template_part('partials/entry-meta'); ?>
+
+    <h3 class="entry-title">
         <a href="<?= get_permalink() ?>">
             <?php the_title(); ?>
         </a>
     </h3>
 
-    </hr>
+    <div class="entry-date">
+        <?php echo get_the_date('M d, Y'); ?>
+    </div>
 
-    <!-- date -->
-    <?php echo get_the_date('M d, Y'); ?>
 
-    <!-- excerpt -->
-    <?php  the_excerpt() ?>
+    <div class="entry-content">
+        <?php the_content(); ?>
+    </div>
 
 </div>
 

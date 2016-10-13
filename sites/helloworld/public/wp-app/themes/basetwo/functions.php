@@ -185,4 +185,15 @@ function register_project()
 }
 
 
+
+
+#-----------------------------------------------------------------#
+# Utils
+#-----------------------------------------------------------------#
+
+function util_post_class($class = ''){
+    return $class . ' ' . get_post_type() . ' ' . get_post_type() . '-' . get_the_ID();
+}
+
+
 flush_rewrite_rules();

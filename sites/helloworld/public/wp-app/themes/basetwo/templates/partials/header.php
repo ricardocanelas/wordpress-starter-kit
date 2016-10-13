@@ -1,11 +1,13 @@
 <div class="row">
 
     <div class="col-xs-12">
+
         <div class="pull-left">
             <a class="brand" href="<?= esc_url(home_url('/')); ?>">
                 <?php bloginfo('name'); ?>
             </a>
         </div>
+
 
         <div class="pull-left">
             <nav class="nav-primary">
@@ -16,6 +18,7 @@
                 ?>
             </nav>
         </div>
+
     </div>
 
 </div>
