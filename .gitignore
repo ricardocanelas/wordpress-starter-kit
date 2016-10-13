@@ -10,6 +10,7 @@ sites/helloworld/public/wp-app/themes/sage
 *.log
 sites/html
 sites/helloworld/config/vendor
+sites/helloworld/config/composer.lock
 sites/helloworld/public/wordpress/wp-config.php
 sites/helloworld/public/wordpress/wp-content/advanced-cache.php
 sites/helloworld/public/wordpress/wp-content/backup-db/
