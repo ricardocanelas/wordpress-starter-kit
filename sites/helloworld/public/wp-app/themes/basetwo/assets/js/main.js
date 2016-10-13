@@ -1,6 +1,5 @@
 window.$ = window.jQuery = require('jquery');
-// var Bootstrap = require('bootstrap-sass');
-// Bootstrap.$ = $;
+// var Bootstrap = require('bootstrap-sass'); // Bootstrap.$ = $;
 require('bootstrap-sass/assets/javascripts/bootstrap');
 
 // -------------------------------------------------------

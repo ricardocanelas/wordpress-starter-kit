@@ -9,7 +9,9 @@
     </h3>
 
     <div class="entry-date">
-        <?php echo get_the_date('M d, Y'); ?>
+        <time class="updated" datetime="<?= get_post_time('c', true); ?>">
+            <?= get_the_date(); ?>
+        </time>
     </div>
 
 
@@ -17,6 +19,12 @@
         <?php the_content(); ?>
     </div>
 
+    <div class="entry-author">
+        <?= __('By', 'basetwo'); ?>
+        <a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author">
+            <?= get_the_author(); ?>
+        </a>
+    </div>
 
     <div class="entry-pages">
         <?php wp_link_pages([
