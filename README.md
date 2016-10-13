@@ -4,7 +4,9 @@ It's a simple way to start a new project with Wordpress using [Vagrant](https://
 
 * Install [VirtualBox](https://www.virtualbox.org/)
 
-* Install vagrant using the installation instructions in the [Getting Started document](https://www.vagrantup.com/docs/getting-started/)
+* Install Vagrant using the installation instructions in the [Getting Started document](https://www.vagrantup.com/docs/getting-started/)
+
+* Install vagrant-triggers plugin <br/>`vagrant plugin install vagrant-triggers` 
 
 * Clone this repository and cd into it
 
@@ -12,6 +14,7 @@ It's a simple way to start a new project with Wordpress using [Vagrant](https://
 
 * You should now have your working 
   * http://192.168.10.11
+  * or http://
   
  
 ## Installed Components
@@ -59,7 +62,7 @@ It's a simple way to start a new project with Wordpress using [Vagrant](https://
 ```
  
 
-## Theme structure
+## Structure
 
 ```shell
 sites/                     
@@ -75,40 +78,35 @@ sites/
 └── Vagrantfile           
 ```
 
-# Sage Theme
-
-More information about installation and setup 
-https://github.com/roots/sage/tree/9.0.0-alpha.3
-
-## Theme structure
+### Theme structure
 
 ```shell
-themes/your-theme-name/   # → Root of your Sage based theme
+themes/basetwo/           # → Root of based theme
+│
+├── functions.php         # → Composer autoloader, theme includes, etc..
+├── gulpfile.js           # → Gulpfile.js there're basic tasks for compilation, etc.
+├── index.php             # → (never edit)
+├── node_modules/         # → Node.js packages (never edit)
+├── package.json          # → Dependencies and scripts
+├── screenshot.png        # → Theme screenshot for WP admin
+├── style.css             # → Theme meta information
+│
 ├── assets                # → Front-end assets
-│   ├── config.json       # → Settings for compiled assets
-│   ├── build/            # → Webpack and ESLint config
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
-│   ├── scripts/          # → Theme JS
-│   └── styles/           # → Theme stylesheets
-├── composer.json         # → Autoloading for `src/` files
-├── composer.lock         # → Composer lock file (never edit)
+│   ├── js/               # → Theme JS
+│   └── scss/             # → Theme stylesheets
+│
 ├── dist/                 # → Built theme assets (never edit)
-├── functions.php         # → Composer autoloader, theme includes
-├── index.php             # → Never manually edit
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
-├── screenshot.png        # → Theme screenshot for WP admin
-├── src/                  # → Theme PHP
-│   ├── lib/Sage/         # → Theme wrapper, asset manifest
-│   ├── admin.php         # → Theme customizer setup
-│   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
-│   └── setup.php         # → Theme setup
-├── style.css             # → Theme meta information
-├── templates/            # → Theme templates
-│   ├── layouts/          # → Base templates
-│   └── partials/         # → Partial templates
-└── vendor/               # → Composer packages (never edit)
-```
+│
+├── lib/                  # → Theme PHP
+│   ├── assets.php        # → x
+│   ├── config.php        # → x
+│   ├── filters.php       # → x
+│   ├── wrapper.php       # → x
+│   └── wrapper.php       # → x
+└── templates/            # → Theme templates
+    ├── layouts/          # → Base templates
+    └── partials/         # → Partial templates
 
+```
