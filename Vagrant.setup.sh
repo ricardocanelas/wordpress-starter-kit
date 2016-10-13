@@ -70,22 +70,17 @@ MYSQL_USERNAME=root
 MYSQL_PASSWORD=root
 DB_NAME=helloworld
 DB_DEV_BACKUP='/vagrant/sites/helloworld/database/dev_db.sql.gz'
-mysql -u $MYSQL_USERNAME -p"$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;
-GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USERNAME'@'localhost'"
 
-
-
-# ---------------------------------------------------------------------------------------------------------------------
-                                                Step 'Restore Database'
-# ---------------------------------------------------------------------------------------------------------------------
-
-if [[ ! -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$DB_NAME'" 2>&1`" ]];
+if [[ ! -z "`mysql -u $MYSQL_USERNAME -p"$MYSQL_PASSWORD" -se "SHOW DATABASES LIKE 'helloworld'" 2>&1`" ]];
 then
   echo "Database already exists"
+
 else
-  echo "Database does not exit"
-  echo "Restoring database"
+  echo "Creating a new database.."
+  mysql -u $MYSQL_USERNAME -p"$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;
+  GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USERNAME'@'localhost'"
   zcat $DB_DEV_BACKUP | mysql -u $MYSQL_USERNAME -p"$MYSQL_PASSWORD" $DB_NAME
+  echo "Restored database"
 fi
 
 
