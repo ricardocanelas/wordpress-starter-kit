@@ -1,3 +1,5 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
 
@@ -16,5 +18,12 @@ Vagrant.configure("2") do |config|
     config.ssh.insert_key = false
 
     config.vm.provision :shell, keep_color: true, path: "Vagrant.setup.sh"
+
+    config.vm.provision "trigger" do |trigger|
+        trigger.fire do
+            info 'npm start'
+            run 'npm --prefix ./sites/helloworld/public/wp-app/themes/basetwo start'
+        end
+    end
 
 end
