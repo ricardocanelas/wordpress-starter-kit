@@ -12,6 +12,9 @@
     <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
     <![endif]-->
     <?php wp_head(); ?>
+    <script type="text/javascript">
+        var ajaxurl = "<?= admin_url('admin-ajax.php') ?>";
+    </script>
 </head>
 
 <body <?php body_class(); ?>>

@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "start": "npm run gulp",
+    "build": "npm run gulp --production",
     "gulp": "gulp"
   },
   "engines": {

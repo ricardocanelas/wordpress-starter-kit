@@ -19,11 +19,23 @@ $base_includes = [
 
     'lib/app/utils.php',
     'lib/app/phpmailer.php',
-    'lib/app/widget.php',
+    'lib/app/widgets.php',
     'lib/app/menu.php',
     'lib/app/posttypes.php',
+    'lib/app/shortcodes.php',
+
+    'lib/api/*',
 ];
 foreach ($base_includes as $file) {
+
+    if(substr($file, -1) === '*') {
+        $path = dirname(__FILE__) . '/' . $file;
+        foreach (glob($path) as $p) {
+            if (is_file($p)) include_once $p;
+        }
+        continue;
+    }
+
     if (!$filepath = locate_template($file)) {
         trigger_error(sprintf(__('Error locating %s for inclusion', 'basetwo'), $file), E_USER_ERROR);
     }
