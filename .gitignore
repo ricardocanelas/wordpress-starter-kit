@@ -1,5 +1,8 @@
 .DS_Store
 
+sites/helloworld/public/wp-app/themes/basethree
+sites/helloworld/public/wp-app/themes/sage
+
 ### PHPStorm IDE
 .idea
 
