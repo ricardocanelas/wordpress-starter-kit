@@ -13,6 +13,7 @@ Step () {
 apt-get update -qq
 
 
+
 # ---------------------------------------------------------------------------------------------------------------------
                                                   Step 'Apache Setup'
 # ---------------------------------------------------------------------------------------------------------------------
@@ -47,6 +48,7 @@ a2enmod actions fastcgi rewrite
 service apache2 reload
 
 
+
 # ---------------------------------------------------------------------------------------------------------------------
                                                    Step 'MySQL Setup'
 # ---------------------------------------------------------------------------------------------------------------------
@@ -67,9 +69,24 @@ apt-get install -y mysql-server mysql-client php5-mysql
 MYSQL_USERNAME=root
 MYSQL_PASSWORD=root
 DB_NAME=helloworld
+DB_DEV_BACKUP='/vagrant/sites/helloworld/database/dev_db.sql.gz'
 mysql -u $MYSQL_USERNAME -p"$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;
-GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USERNAME'@'localhost'
-"
+GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USERNAME'@'localhost'"
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+                                                Step 'Restore Database'
+# ---------------------------------------------------------------------------------------------------------------------
+
+if [[ ! -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$DB_NAME'" 2>&1`" ]];
+then
+  echo "Database already exists"
+else
+  echo "Database does not exit"
+  echo "Restoring database"
+  zcat $DB_DEV_BACKUP | mysql -u $MYSQL_USERNAME -p"$MYSQL_PASSWORD" $DB_NAME
+fi
 
 
 
@@ -105,6 +122,7 @@ a2enconf php5-fpm
 service apache2 reload
 
 
+
 # ---------------------------------------------------------------------------------------------------------------------
                                                 Step 'PHPMyAdmin Setup'
 # ---------------------------------------------------------------------------------------------------------------------
@@ -125,13 +143,6 @@ ln -s /etc/phpmyadmin/apache.conf /etc/apache2/sites-enabled/phpmyadmin.conf
 # Restarting apache to make changes
 service apache2 restart
 
-
-# ---------------------------------------------------------------------------------------------------------------------
-                                                Step 'Restore Database'
-# ---------------------------------------------------------------------------------------------------------------------
-
-# DATABASE_DEV_BACKUP "/sites/db/dev_db.sql.gz"
-# zcat $DATABASE_DEV_BACKUP | mysql -u "root" -p "root" helloworld
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -154,6 +165,7 @@ apt-get install -y git
 # Install Composer
 curl -s https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
+
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -179,4 +191,3 @@ if [ ! "$(ls -A $WP_DIRECTORY)" ]; then
     rm -f "$WP_DIRECTORY/$WP_FILE"
     echo "Download has completed"
 fi
-
