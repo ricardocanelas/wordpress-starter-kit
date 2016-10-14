@@ -19,13 +19,11 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision :shell, keep_color: true, path: "Vagrant.setup.sh"
 
-    config.vm.provision "trigger" do |trigger|
-        trigger.fire do
-            if ! File.exist?("./sites/helloworld/config/composer.lock")
-                run 'composer install --quiet --working-dir ./sites/helloworld/config'
-            end
-            run 'npm --prefix ./sites/helloworld/public/wp-app/themes/basetwo start'
+    config.trigger.after :up do
+        if ! File.exist?("./sites/helloworld/config/composer.lock")
+            run 'composer install --quiet --working-dir ./sites/helloworld/config'
         end
+        run 'npm --prefix ./sites/helloworld/public/wp-app/themes/basetwo start'
     end
 
 end
