@@ -38,7 +38,7 @@ function register_project()
             'has_archive' => true,
             'query_var' => 'project',
             'can_export' => true,
-            'rewrite' => array( 'slug' => 'projects'),
+            'rewrite' => array( 'slug' => 'projects', 'with_front' => true),
             'capability_type' => 'post'
         )
     );

@@ -17,7 +17,6 @@ $base_includes = [
     'lib/base/wrapper.php',
     'lib/base/assets.php',
 
-    'lib/app/utils.php',
     'lib/app/phpmailer.php',
     'lib/app/widgets.php',
     'lib/app/menu.php',
@@ -69,3 +68,19 @@ add_action('customize_render_section', function ($section) {
         $section->title = wp_get_theme(basename(__DIR__))->display('Name');
     }
 }, 10, 2);
+
+
+#-----------------------------------------------------------------#
+# Util
+#-----------------------------------------------------------------#
+class Util {
+
+    public static function post_class($class = ''){
+        echo self::get_post_class($class);
+    }
+    public static function get_post_class($class = ''){
+        return $class . ' ' . get_post_type() . ' ' . get_post_type() . '-' . get_the_ID();
+    }
+
+}
+

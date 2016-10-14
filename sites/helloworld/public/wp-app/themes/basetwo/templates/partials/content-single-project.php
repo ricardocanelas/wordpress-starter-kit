@@ -1,4 +1,4 @@
-<div class="col-xs-12 <?= util_post_class('content-single') ?>">
+<div class="col-xs-12 <?= Util::get_post_class('content-single') ?>">
 
     <h3 class="entry-title">
         <a href="<?= get_permalink() ?>">
