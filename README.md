@@ -100,13 +100,17 @@ themes/basetwo/           # → Root of based theme
 ├── dist/                 # → Built theme assets (never edit)
 │
 ├── lib/                  # → Theme PHP
-│   ├── assets.php        # → x
-│   ├── config.php        # → x
-│   ├── filters.php       # → x
-│   ├── wrapper.php       # → x
-│   └── wrapper.php       # → x
+│   ├── app/              # → App files (all functions it'll be here) 
+│   └── base/             # → Base files
+│       ├── assets.php    # → 
+│       ├── config.php    # → 
+│       ├── filters.php   # → 
+│       ├── setupe.php    # → 
+│       └── wrapper.php   # → 
 └── templates/            # → Theme templates
     ├── layouts/          # → Base templates
     └── partials/         # → Partial templates
 
 ```
+
+

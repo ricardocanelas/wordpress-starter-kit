@@ -24,14 +24,14 @@ $base_includes = [
     'lib/app/posttypes.php',
     'lib/app/shortcodes.php',
 
-    'lib/api/*',
+    'api/*',
 ];
 foreach ($base_includes as $file) {
 
     if(substr($file, -1) === '*') {
         $path = dirname(__FILE__) . '/' . $file;
-        foreach (glob($path) as $p) {
-            if (is_file($p)) include_once $p;
+        foreach (glob($path) as $f) {
+            if (is_file($f)) include_once $f;
         }
         continue;
     }
