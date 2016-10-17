@@ -14,6 +14,7 @@
 
 $base_includes = [
     'lib/base/config.php',
+    'lib/base/setup.php',
     'lib/base/wrapper.php',
     'lib/base/assets.php',
 

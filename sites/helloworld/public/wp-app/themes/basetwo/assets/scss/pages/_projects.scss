@@ -16,4 +16,17 @@ body #wrapper #middle{
     }
   }
 
+
+  .content-single.project{
+
+    .entry-thumbnail{
+      width: 100%;
+      height: 200px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+
+  }
+
 }

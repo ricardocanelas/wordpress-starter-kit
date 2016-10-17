@@ -1,0 +1,46 @@
+body #wrapper #middle {
+
+
+  .content-single.post {
+
+    .entry-terms {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      li {
+        display: inline-block;
+        a{
+          padding: 5px;
+          margin: 0px 5px 0px 0px;
+          background-color: #fff9c0;
+          font-size: 11px;
+        }
+      }
+    }
+
+    .entry-tags {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      li {
+        display: inline-block;
+        a{
+          padding: 5px;
+          margin: 0px 5px 0px 0px;
+          background-color: #d3e2ff;
+          font-size: 11px;
+        }
+      }
+    }
+
+    .entry-comments{
+      margin-top: 20px;
+
+      h2{font-size: 14px}
+      #comments{
+        display: none;
+        border-top: 1px solid #ccc;
+      }
+    }
+
+  }
+
+}

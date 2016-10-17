@@ -5795,6 +5795,12 @@ body #wrapper {
   border-right: 1px solid #ccc;
   background-color: white; }
 
+ul, li {
+  padding: 0px; }
+
+ol {
+  padding-left: 15px; }
+
 /* Bootstrap: Thumbnail
 ---====================== */
 .thumbnail .image img {
@@ -5812,6 +5818,36 @@ body #wrapper #footer {
   padding-top: 20px;
   border-top: 1px solid #e8e2dd; }
 
+body #wrapper #middle .content-single.post .entry-terms {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+  body #wrapper #middle .content-single.post .entry-terms li {
+    display: inline-block; }
+    body #wrapper #middle .content-single.post .entry-terms li a {
+      padding: 5px;
+      margin: 0px 5px 0px 0px;
+      background-color: #fff9c0;
+      font-size: 11px; }
+
+body #wrapper #middle .content-single.post .entry-tags {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+  body #wrapper #middle .content-single.post .entry-tags li {
+    display: inline-block; }
+    body #wrapper #middle .content-single.post .entry-tags li a {
+      padding: 5px;
+      margin: 0px 5px 0px 0px;
+      background-color: #d3e2ff;
+      font-size: 11px; }
+
+body #wrapper #middle .content-single.post .entry-comments {
+  margin-top: 20px; }
+  body #wrapper #middle .content-single.post .entry-comments h2 {
+    font-size: 14px; }
+  body #wrapper #middle .content-single.post .entry-comments #comments {
+    display: none;
+    border-top: 1px solid #ccc; }
+
 body #wrapper #middle .projects .project .project-container {
   margin-bottom: 20px;
   padding-bottom: 10px;
@@ -5821,3 +5857,10 @@ body #wrapper #middle .projects .project:last-child .project-container {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none; }
+
+body #wrapper #middle .content-single.project .entry-thumbnail {
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
