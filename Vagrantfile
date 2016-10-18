@@ -23,6 +23,9 @@ Vagrant.configure("2") do |config|
         if ! File.exist?("./sites/helloworld/config/composer.lock")
             run 'composer install --quiet --working-dir ./sites/helloworld/config'
         end
+        if ! Dir.exists?("./sites/helloworld/public/wp-app/themes/basetwo/node_modules")
+            run 'npm --prefix ./sites/helloworld/public/wp-app/themes/basetwo install'
+        end
         run 'npm --prefix ./sites/helloworld/public/wp-app/themes/basetwo start'
     end
 
