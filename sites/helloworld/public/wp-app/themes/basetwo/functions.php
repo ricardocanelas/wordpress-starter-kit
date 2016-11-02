@@ -25,6 +25,8 @@ $base_includes = [
     'lib/app/shortcodes.php',
 
     'api/*',
+
+    'templates/components/header/HeaderComp.php'
 ];
 foreach ($base_includes as $file) {
 
@@ -71,9 +73,11 @@ add_action('customize_render_section', function ($section) {
 }, 10, 2);
 
 
+
 #-----------------------------------------------------------------#
 # Util
 #-----------------------------------------------------------------#
+
 class Util {
 
     public static function post_class($class = ''){

@@ -1,3 +1,12 @@
+<?php
+use BaseT\Components\HeaderComp;
+?>
+
+<?php
+    $header = new HeaderComp(['title' => 'My Title']);
+    $header->renderHtml();
+?>
+
 <div class="row">
     <div class="col-xs-12">
         <?php while (have_posts()) : the_post(); ?>
