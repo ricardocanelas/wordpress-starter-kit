@@ -3,8 +3,20 @@ use BaseT\Components\HeaderComp;
 ?>
 
 <?php
+    /**
+     * Using component header
+     * Example 1:
+     */
     $header = new HeaderComp(['title' => 'My Title']);
     $header->renderHtml();
+?>
+
+<?php
+    /**
+     * Using component header
+     * Example 2:
+     */
+    echo do_shortcode("[component-header title='Another Title' sub_title='Virtute epicuri eos eu, vim novum verear ex']")
 ?>
 
 <div class="row">

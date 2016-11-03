@@ -18,7 +18,7 @@ class HeaderComp
 class HeaderCompData
 {
     public $title = '';
-    public $sub_title = '';
+    public $sub_title = null;
 
     public function __construct($data = null)
     {
@@ -27,5 +27,9 @@ class HeaderCompData
                 $this->{$key} = $value;
             }
         }
+    }
+
+    public function has_sub_title(){
+        return ($this->sub_title == '' || $this->sub_title == null) ? false : true;
     }
 }
