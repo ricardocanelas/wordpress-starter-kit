@@ -26,3 +26,6 @@ use BaseT\Components\HeaderComp;
         <?php endwhile; ?>
     </div>
 </div>
+
+
+<?php wpplugin_cta(); ?>
