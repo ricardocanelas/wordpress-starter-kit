@@ -38,7 +38,6 @@ class BaseWrapping
             //array_unshift($this->templates, sprintf($str . '-%s.php', self::$base));
             array_unshift($this->templates, self::$base);
         }
-        //echo "Templates:<br/>"; var_dump($this->templates); echo "<br/>";
     }
 
     public static function wrap($main)

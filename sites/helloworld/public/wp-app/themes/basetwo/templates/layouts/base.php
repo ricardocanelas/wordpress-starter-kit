@@ -1,4 +1,4 @@
-<?php use BaseT\Wrapper; ?>
+<?php use \BaseT\Wrapper; ?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
