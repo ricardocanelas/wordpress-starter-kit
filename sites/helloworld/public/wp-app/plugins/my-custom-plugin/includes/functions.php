@@ -5,7 +5,7 @@ function wpplugin_cta()
     wp_register_style('cta_stylesheet', plugins_url( '../styles/cta-style.css', __FILE__ ) );
     wp_enqueue_style( 'cta_stylesheet' );
 
-    wp_register_script('cta_script', plugins_url('../scripts/cta-script.js', __FILE__), array('jquery') );
+    wp_register_script('cta_script', plugins_url('../scripts/cta-script.js', __FILE__), array('') );
     wp_enqueue_script('cta_script');
 
     echo '<div class="cta">';

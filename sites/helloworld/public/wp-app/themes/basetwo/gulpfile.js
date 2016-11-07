@@ -18,6 +18,8 @@ var babelify = require("babelify");
 var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
 var fs = require('fs');
+var rev          = require('gulp-rev');
+var runSequence = require('run-sequence');
 
 
 
@@ -29,7 +31,7 @@ var fs = require('fs');
  * - Reload browser
  ---------------------------------------------------------------------------*/
 gulp.task('sass', function() {
-    gulp.src('assets/scss/main.scss')
+    return gulp.src('assets/scss/main.scss')
         .pipe(plumber())
         .pipe(sass(eyeglass()))
         .pipe(autoprefixer())
@@ -45,9 +47,9 @@ gulp.task('sass', function() {
  * - Launch the task before production
  ---------------------------------------------------------------------------*/
 gulp.task('minify-css', function () {
-    gulp.src('dist/styles/main.css')
+    return gulp.src('dist/styles/main.css')
         .pipe(cssnano())
-        .pipe(rename({suffix: '.min'}))
+        //.pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist/styles'));
 });
 
@@ -90,7 +92,7 @@ gulp.task('fonts', function() {
  * - Babelify - a babel plugin for browserify, to make browserify.
  ---------------------------------------------------------------------------*/
 gulp.task('es6', function() {
-    browserify({ debug: true })
+    return browserify({ debug: true })
         .transform(babelify, { presets: ['es2015'] })
         .require("./assets/js/main.js", { entry: true })
         .bundle()
@@ -112,9 +114,9 @@ gulp.task('js-watch', ['es6'], function (done) {
  * - Launch the task before production
  ---------------------------------------------------------------------------*/
 gulp.task('minify-js', function() {
-    gulp.src('dist/scripts/main.js')
+    return gulp.src('dist/scripts/main.js')
         .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
+        //.pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist/scripts'));
 });
 
@@ -141,6 +143,22 @@ gulp.task('minify-js', function() {
 
 
 
+
+/*---------------------------------------------------------------------------
+ * Revisioning
+ ---------------------------------------------------------------------------*/
+gulp.task('revisioning', () =>
+    gulp.src(['dist/styles/main.css', 'dist/scripts/main.js'], {base: 'dist'})
+        .pipe(gulp.dest('dist'))  // copy original assets to dist dir
+        .pipe(rev())
+        .pipe(gulp.dest('dist'))  // write rev'd assets to dist dir
+        .pipe(rev.manifest('dist/assets.json', {base: 'dist/', merge: false}))
+        .pipe(gulp.dest('dist'))  // write manifest to dist dir
+);
+
+
+
+
 /*---------------------------------------------------------------------------
  * Browser Sync
  * - Static Server + watching scss/js/php files
@@ -161,4 +179,8 @@ gulp.task('serve', ['sass', 'es6'], function() {
  ---------------------------------------------------------------------------*/
 gulp.task('default',['sass', 'es6', 'serve']);
 gulp.task('watch',['serve']);
-gulp.task('production',['fonts', 'sass', 'minify-css', 'es6', 'minify-js', 'images']);
+gulp.task('production', function(done){
+    runSequence('sass', 'minify-css', 'es6', 'minify-js', 'revisioning', 'fonts', 'images', function() {
+        console.log('Run something else');
+    });
+});

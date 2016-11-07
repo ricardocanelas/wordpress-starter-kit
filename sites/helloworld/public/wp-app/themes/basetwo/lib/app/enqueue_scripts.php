@@ -28,13 +28,8 @@ function asset_path($filename)
 
 function assets()
 {
-    if(WP_ENV == 'production'){
-        wp_enqueue_style('main-style',   asset_path('styles/main.min.css'), false, null);
-        wp_enqueue_script('main-script', asset_path('scripts/main.min.js'), [], null, true);
-    }else{
-        wp_enqueue_style('main-style',   asset_path('styles/main.css'), false, null);
-        wp_enqueue_script('main-script', asset_path('scripts/main.js'), [], null, true);
-    }
+    wp_enqueue_style('main-style',   asset_path('styles/main.css'), false, null);
+    wp_enqueue_script('main-script', asset_path('scripts/main.js'), [], null, true);
 }
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
