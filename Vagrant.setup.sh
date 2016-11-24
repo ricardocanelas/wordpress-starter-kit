@@ -109,13 +109,25 @@ cat > /etc/apache2/conf-available/php5-fpm.conf << EOF
 </IfModule>
 EOF
 
+upload_max_filesize=240M
+post_max_size=50M
+max_execution_time=600
+max_input_time=223
+
+for key in upload_max_filesize post_max_size max_execution_time max_input_time
+do
+ echo -e "$key => $(eval echo \${$key})"
+ sed -i "s/^\($key\).*/\1 = $(eval echo \${$key})/" /etc/php5/fpm/php.ini
+done
+
+
 # Enabling php modules
 php5enmod mcrypt
 
 # Triggering changes in apache
 a2enconf php5-fpm
 service apache2 reload
-
+sudo service php5-fpm restart
 
 
 # ---------------------------------------------------------------------------------------------------------------------
