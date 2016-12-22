@@ -173,6 +173,13 @@ apt-get install -y git
 curl -s https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
+# Installing PHPUnit 4.8
+# http://codesymphony.co/writing-wordpress-plugin-unit-tests/
+# https://yoast.com/dev-blog/unit-testing-wordpress-plugins-with-phpunit-in-phpstorm/
+sudo wget https://phar.phpunit.de/phpunit-old.phar
+chmod +x phpunit-old.phar
+sudo mv phpunit-old.phar /usr/local/bin/phpunit
+phpunit --version
 
 
 # ---------------------------------------------------------------------------------------------------------------------

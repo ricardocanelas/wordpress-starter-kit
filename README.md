@@ -28,6 +28,7 @@ It's a simple way to start a new project with Wordpress using [Vagrant](https://
 * [Gulp](http://gulpjs.com/)
 * [Git](http://git-scm.com/)
 * [Composer](https://getcomposer.org/)
+* [PHPUnit 4.8](https://phpunit.de/)
 * [Wordpress 4.6.1](https://wordpress.org/)
   
   
@@ -114,3 +115,10 @@ themes/basetwo/           # → Root of based theme
 ```
 
 
+
+- 
+https://developer.wordpress.org/plugins/the-basics/best-practices/#architecture-patterns-explained 
+http://jonathannicol.com/blog/2014/06/22/organize-wordpress-functions-file/
+
+-
+https://developer.wordpress.org/themes/basics/theme-functions/
