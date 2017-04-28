@@ -7,7 +7,17 @@ Vagrant.configure("2") do |config|
 
     config.vm.network :private_network, ip: "192.168.10.11"
 
-    config.vm.synced_folder "sites/", "/var/www/", :owner=> 'www-data', :group=>'www-data'
+    config.vm.synced_folder "sites/", "/var/www/", :owner=> 'www-data', :group=>'root'
+
+    # if Vagrant::Util::Platform.windows?
+    #     # set up synced folder as nfs
+    #     config.vm.synced_folder  "./www", "/var/www",
+    #     type: "nfs"
+    # else
+    #     # set up synced folder as nfs
+    #     config.vm.synced_folder  "./website", "/var/www",
+    #     owner: "www-data", group: "root"
+    # end
 
     config.vm.provider "virtualbox" do |vb|
       vb.name = "WordPressBase"
